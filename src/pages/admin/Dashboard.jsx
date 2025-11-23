@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../../components/common/Card'
 import { getProducts } from '../../services/productService'
-import { getUsers } from '../../services/userService'
+import { getAllUsers } from '../../services/userService'
 import { getAllReviews } from '../../services/reviewService'
 
 const Dashboard = () => {
@@ -13,7 +13,7 @@ const Dashboard = () => {
       setLoading(true)
 
       const products = await getProducts()
-      const users = await getUsers()
+      const users = await getAllUsers()
       const reviews = await getAllReviews()
 
       setStats({
