@@ -1,0 +1,63 @@
+{
+  "id": "minimal",
+  "name": "Minimal",
+  "colors": {
+    "primary": "#000000",
+    "primaryDark": "#1a1a1a",
+    "secondary": "#666666",
+    "accent": "#4a4a4a",
+    "background": "#ffffff",
+    "surface": "#fafafa",
+    "text": "#000000",
+    "textSecondary": "#666666",
+    "border": "#e0e0e0",
+    "error": "#d32f2f",
+    "warning": "#f57c00",
+    "success": "#388e3c",
+    "info": "#1976d2"
+  },
+  "darkColors": {
+    "primary": "#ffffff",
+    "primaryDark": "#f5f5f5",
+    "secondary": "#b3b3b3",
+    "accent": "#cccccc",
+    "background": "#000000",
+    "surface": "#1a1a1a",
+    "text": "#ffffff",
+    "textSecondary": "#b3b3b3",
+    "border": "#333333",
+    "error": "#ef5350",
+    "warning": "#ff9800",
+    "success": "#66bb6a",
+    "info": "#42a5f5"
+  },
+  "gradients": {
+    "primary": "linear-gradient(135deg, #000000 0%, #434343 100%)",
+    "hero": "linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%)",
+    "card": "linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)"
+  },
+  "typography": {
+    "fontFamily": "'Inter', sans-serif",
+    "headingFamily": "'Inter', sans-serif",
+    "fontSize": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "base": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem"
+    }
+  },
+  "spacing": {
+    "cardPadding": "2rem",
+    "sectionPadding": "4rem",
+    "borderRadius": "0"
+  },
+  "effects": {
+    "glass": false,
+    "shadow": "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+    "hoverShadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "glass",
+  "name": "Glass",
+  "colors": {
+    "primary": "#6366f1",
+    "primaryDark": "#4f46e5",
+    "secondary": "#ec4899",
+    "accent": "#8b5cf6",
+    "background": "#f0f4f8",
+    "surface": "rgba(255, 255, 255, 0.7)",
+    "text": "#1e293b",
+    "textSecondary": "#64748b",
+    "border": "rgba(148, 163, 184, 0.2)",
+    "error": "#ef4444",
+    "warning": "#f59e0b",
+    "success": "#10b981",
+    "info": "#3b82f6"
+  },
+  "darkColors": {
+    "primary": "#818cf8",
+    "primaryDark": "#6366f1",
+    "secondary": "#f472b6",
+    "accent": "#a78bfa",
+    "background": "#0f172a",
+    "surface": "rgba(30, 41, 59, 0.7)",
+    "text": "#f1f5f9",
+    "textSecondary": "#94a3b8",
+    "border": "rgba(148, 163, 184, 0.2)",
+    "error": "#f87171",
+    "warning": "#fbbf24",
+    "success": "#34d399",
+    "info": "#60a5fa"
+  },
+  "gradients": {
+    "primary": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    "hero": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    "card": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
+  },
+  "typography": {
+    "fontFamily": "'Inter', sans-serif",
+    "headingFamily": "'Poppins', sans-serif",
+    "fontSize": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "base": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem"
+    }
+  },
+  "spacing": {
+    "cardPadding": "1.5rem",
+    "sectionPadding": "3rem",
+    "borderRadius": "1rem"
+  },
+  "effects": {
+    "glass": true,
+    "shadow": "0 8px 32px 0 rgba(31, 38, 135, 0.15)",
+    "hoverShadow": "0 8px 32px 0 rgba(31, 38, 135, 0.25)",
+    "blur": "blur(10px)"
+  }
+}

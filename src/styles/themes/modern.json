@@ -1,0 +1,63 @@
+{
+  "id": "modern",
+  "name": "Modern",
+  "colors": {
+    "primary": "#0ea5e9",
+    "primaryDark": "#0284c7",
+    "secondary": "#a855f7",
+    "accent": "#10b981",
+    "background": "#ffffff",
+    "surface": "#f9fafb",
+    "text": "#111827",
+    "textSecondary": "#6b7280",
+    "border": "#e5e7eb",
+    "error": "#ef4444",
+    "warning": "#f59e0b",
+    "success": "#10b981",
+    "info": "#3b82f6"
+  },
+  "darkColors": {
+    "primary": "#38bdf8",
+    "primaryDark": "#0ea5e9",
+    "secondary": "#c084fc",
+    "accent": "#34d399",
+    "background": "#111827",
+    "surface": "#1f2937",
+    "text": "#f9fafb",
+    "textSecondary": "#9ca3af",
+    "border": "#374151",
+    "error": "#f87171",
+    "warning": "#fbbf24",
+    "success": "#34d399",
+    "info": "#60a5fa"
+  },
+  "gradients": {
+    "primary": "linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%)",
+    "hero": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    "card": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+  },
+  "typography": {
+    "fontFamily": "'Inter', sans-serif",
+    "headingFamily": "'Poppins', sans-serif",
+    "fontSize": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "base": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem"
+    }
+  },
+  "spacing": {
+    "cardPadding": "1.5rem",
+    "sectionPadding": "3rem",
+    "borderRadius": "0.75rem"
+  },
+  "effects": {
+    "glass": false,
+    "shadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+    "hoverShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
+  }
+}
