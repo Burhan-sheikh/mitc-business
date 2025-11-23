@@ -24,7 +24,7 @@ const ProductDetail = () => {
   const [similarProducts, setSimilarProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [reviewsLoading, setReviewsLoading] = useState(false)
-  const [submittin gReview, setSubmittingReview] = useState(false)
+  const [submittingReview, setSubmittingReview] = useState(false)
 
   // Fetch product data
   useEffect(() => {
