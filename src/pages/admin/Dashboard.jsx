@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Card from '../../components/common/Card'
 import { getProducts } from '../../services/productService'
 import { getUsers } from '../../services/userService'
-import { getReviews } from '../../services/reviewService'
+import { getAllReviews } from '../../services/reviewService'
 
 const Dashboard = () => {
   const [stats, setStats] = useState({ products: 0, users: 0, reviews: 0 })
@@ -11,14 +11,17 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchStats() {
       setLoading(true)
+
       const products = await getProducts()
       const users = await getUsers()
-      const reviews = await getReviews()
+      const reviews = await getAllReviews()
+
       setStats({
-        products: products.products?.length || 0,
-        users: users.users?.length || 0,
-        reviews: reviews.reviews?.length || 0
+        products: products?.length || products.products?.length || 0,
+        users: users?.length || users.users?.length || 0,
+        reviews: reviews?.length || 0,
       })
+
       setLoading(false)
     }
     fetchStats()
@@ -41,4 +44,5 @@ const Dashboard = () => {
     </div>
   )
 }
+
 export default Dashboard
