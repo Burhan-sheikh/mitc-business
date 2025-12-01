@@ -1,108 +1,89 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Toaster } from 'react-hot-toast'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { useAuth } from './contexts/AuthContext'
 
-// Context Providers
-import { AuthProvider } from './contexts/AuthContext'
-import { ThemeProvider } from './contexts/ThemeContext'
-import { ChatProvider } from './contexts/ChatContext'
-
-// Layout Components
-import Layout from './components/common/Layout'
-import AdminLayout from './components/admin/AdminLayout'
-
-// Pages
-import Home from './pages/Home'
-import ProductDetail from './pages/ProductDetail'
-import StoreInfo from './pages/StoreInfo'
-import Login from './pages/auth/Login'
-import Register from './pages/auth/Register'
-import Profile from './pages/auth/Profile'
+// Public Pages
+import PublicLayout from './components/layouts/PublicLayout'
+import HomePage from './pages/public/HomePage'
+import ProductsPage from './pages/public/ProductsPage'
+import ProductDetailPage from './pages/public/ProductDetailPage'
+import AboutPage from './pages/public/AboutPage'
+import TermsPage from './pages/public/TermsPage'
+import PrivacyPage from './pages/public/PrivacyPage'
+import ContactPage from './pages/public/ContactPage'
+import LoginPage from './pages/auth/LoginPage'
 
 // Admin Pages
-import AdminDashboard from './pages/admin/Dashboard'
-import ProductManagement from './pages/admin/ProductManagement'
-import ProductEditor from './pages/admin/ProductEditor'
-import ChatModeration from './pages/admin/ChatModeration'
-import UserManagement from './pages/admin/UserManagement'
-import ReviewModeration from './pages/admin/ReviewModeration'
-import ImportExport from './pages/admin/ImportExport'
-import Settings from './pages/admin/Settings'
+import AdminLayout from './components/layouts/AdminLayout'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import CustomersPage from './pages/admin/CustomersPage'
+import CustomerDetailPage from './pages/admin/CustomerDetailPage'
+import ProductsManagementPage from './pages/admin/ProductsManagementPage'
+import ProductEditorPage from './pages/admin/ProductEditorPage'
+import StoreReviewsPage from './pages/admin/StoreReviewsPage'
+import SiteSettingsPage from './pages/admin/SiteSettingsPage'
 
-// Route Guards
-import ProtectedRoute from './components/auth/ProtectedRoute'
-import AdminRoute from './components/auth/AdminRoute'
+// Protected Route Component
+const ProtectedRoute = ({ children, adminOnly = false }) => {
+  const { currentUser, userRole, loading } = useAuth()
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
+      </div>
+    )
+  }
+
+  if (!currentUser) {
+    return <Navigate to="/login" replace />
+  }
+
+  if (adminOnly && userRole !== 'admin') {
+    return <Navigate to="/" replace />
+  }
+
+  return children
+}
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <ThemeProvider>
-          <ChatProvider>
-            <Toaster
-              position="top-right"
-              toastOptions={{
-                duration: 4000,
-                style: {
-                  background: '#1a202c',
-                  color: '#fff',
-                },
-                success: {
-                  iconTheme: {
-                    primary: '#10b981',
-                    secondary: '#fff',
-                  },
-                },
-                error: {
-                  iconTheme: {
-                    primary: '#ef4444',
-                    secondary: '#fff',
-                  },
-                },
-              }}
-            />
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<PublicLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="products" element={<ProductsPage />} />
+        <Route path="products/:productId" element={<ProductDetailPage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="terms" element={<TermsPage />} />
+        <Route path="privacy" element={<PrivacyPage />} />
+        <Route path="contact" element={<ContactPage />} />
+      </Route>
 
-            <Routes>
-              {/* Public Routes */}
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="product/:id" element={<ProductDetail />} />
-                <Route path="store-info" element={<StoreInfo />} />
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-                <Route
-                  path="profile"
-                  element={
-                    <ProtectedRoute>
-                      <Profile />
-                    </ProtectedRoute>
-                  }
-                />
-              </Route>
+      {/* Auth Routes */}
+      <Route path="/login" element={<LoginPage />} />
 
-              {/* Admin Routes */}
-              <Route
-                path="/admin"
-                element={
-                  <AdminRoute>
-                    <AdminLayout />
-                  </AdminRoute>
-                }
-              >
-                <Route index element={<AdminDashboard />} />
-                <Route path="products" element={<ProductManagement />} />
-                <Route path="products/new" element={<ProductEditor />} />
-                <Route path="products/edit/:id" element={<ProductEditor />} />
-                <Route path="chats" element={<ChatModeration />} />
-                <Route path="users" element={<UserManagement />} />
-                <Route path="reviews" element={<ReviewModeration />} />
-                <Route path="import-export" element={<ImportExport />} />
-                <Route path="settings" element={<Settings />} />
-              </Route>
-            </Routes>
-          </ChatProvider>
-        </ThemeProvider>
-      </AuthProvider>
-    </Router>
+      {/* Admin Routes */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute adminOnly>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<AdminDashboard />} />
+        <Route path="customers" element={<CustomersPage />} />
+        <Route path="customers/:customerId" element={<CustomerDetailPage />} />
+        <Route path="products" element={<ProductsManagementPage />} />
+        <Route path="products/new" element={<ProductEditorPage />} />
+        <Route path="products/:productId/edit" element={<ProductEditorPage />} />
+        <Route path="store-reviews" element={<StoreReviewsPage />} />
+        <Route path="site-settings" element={<SiteSettingsPage />} />
+      </Route>
+
+      {/* Catch all */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }
 
